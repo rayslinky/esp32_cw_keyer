@@ -2,15 +2,15 @@
 #ifndef keyer_pin_settings_h
 #define keyer_pin_settings_h
 
-#define paddle_left 25   //2  //Note this is Dn, i.e. 14=D14 which is esp32 pin 13
-#define paddle_right 33  //5 //Note this means D27, i.e. pin 12
-#define tx_key_line_1 11 // (high = key down/tx on)
-#define tx_key_line_2 12
+#define paddle_left 13 //25   //2  //Note this is Dn, i.e. 14=D14 which is esp32 pin 13
+#define paddle_right 12 //33  //5 //Note this means D27, i.e. pin 12
+#define tx_key_line_1 15 //11 // (high = key down/tx on)
+#define tx_key_line_2 2 // 12
 #define tx_key_line_3 0
 #define tx_key_line_4 0
 #define tx_key_line_5 0
 #define tx_key_line_6 0
-#define sidetone_line 32 //esp 34,35 not works --22,32 works  4  // connect a speaker for sidetone
+#define sidetone_line 26 //32 //esp 34,35 not works --22,32 works  4  // connect a speaker for sidetone
 #define potentiometer 36 // (seems to need to be on adc0 26 Speed potentiometer (0 to 5 V) Use pot from 1k to 10k
 #define ptt_tx_1 0       // PTT ("push to talk") lines
 #define ptt_tx_2 0       //   Can be used for keying fox transmitter, T/R switch, or keying slow boatanchors
@@ -29,7 +29,7 @@
 #endif
 
 #ifdef FEATURE_COMMAND_BUTTONS
-#define analog_buttons_pin A1
+#define analog_buttons_pin 35 //A1
 #define command_mode_active_led 0
 #endif //FEATURE_COMMAND_BUTTONS
 

@@ -1,14 +1,14 @@
 // compile time features and options - comment or uncomment to add or delete features
 // FEATURES add more bytes to the compiled binary, OPTIONS change code behavior
 
-// #define FEATURE_COMMAND_BUTTONS
+#define FEATURE_COMMAND_BUTTONS
 #define FEATURE_COMMAND_LINE_INTERFACE // Command Line Interface functionality                                                                                                                    \
                                        // #define FEATURE_MEMORIES             // on the Arduino Due, you must have FEATURE_EEPROM_E24C1024 and E24C1024 EEPROM hardware in order to compile this \
                                        // #define FEATURE_MEMORY_MACROS                                                                                                                           \
                                        // #define FEATURE_WINKEY_EMULATION    // disabling Automatic Software Reset is highly recommended (see documentation)                                     \
                                        // #define FEATURE_BEACON                                                                                                                                  \
                                        // #define FEATURE_TRAINING_COMMAND_LINE_INTERFACE
-#define FEATURE_POTENTIOMETER          // do not enable unless you have a potentiometer connected, otherwise noise will falsely trigger wpm changes
+// #define FEATURE_POTENTIOMETER          // do not enable unless you have a potentiometer connected, otherwise noise will falsely trigger wpm changes
 // #define FEATURE_SIDETONE_SWITCH   // adds switch control for the sidetone output. requires an external toggle switch (assigned to an arduino pin - see keyer_pin_settings.h).
 #define FEATURE_SERIAL_HELP
 // #define FEATURE_HELL
@@ -23,7 +23,7 @@
 // #define FEATURE_LCD_8BIT                // classic LCD display using 8 I/O lines
 // #define FEATURE_LCD_ADAFRUIT_I2C          // Adafruit I2C LCD display using MCP23017 at addr 0x20
 // #define FEATURE_LCD_ADAFRUIT_BACKPACK    // Adafruit I2C LCD Backup using MCP23008 (courtesy Josiah Ritchie, KE0BLL)
-#define FEATURE_LCD_YDv1 // YourDuino I2C LCD display with old LCM 1602 V1 ic
+// #define FEATURE_LCD_YDv1 // YourDuino I2C LCD display with old LCM 1602 V1 ic
 // #define FEATURE_LCD1602_N07DH      // http://linksprite.com/wiki/index.php5?title=16_X_2_LCD_Keypad_Shield_for_Arduino
 // #define FEATURE_LCD_SAINSMART_I2C
 // #define FEATURE_LCD_FABO_PCF8574  // https://github.com/FaBoPlatform/FaBoLCD-PCF8574-Library
@@ -36,8 +36,8 @@
 // #define FEATURE_USB_MOUSE               // Uncomment three lines in k3ng_keyer.ino (search for note_usb_uncomment_lines)
 // #define FEATURE_CAPACITIVE_PADDLE_PINS  // remove the bypass capacitors on the paddle_left and paddle_right lines when using capactive paddles
 // #define FEATURE_LED_RING                // Mayhew Labs Led Ring support
-// #define FEATURE_ALPHABET_SEND_PRACTICE  // enables command mode S command - created by Ryan, KC2ZWM
-// #define FEATURE_COMMAND_MODE_PROGRESSIVE_5_CHAR_ECHO_PRACTICE // enables command mode U
+#define FEATURE_ALPHABET_SEND_PRACTICE  // enables command mode S command - created by Ryan, KC2ZWM
+#define FEATURE_COMMAND_MODE_PROGRESSIVE_5_CHAR_ECHO_PRACTICE // enables command mode U
 // #define FEATURE_PTT_INTERLOCK
 // #define FEATURE_QLF
 // #define FEATURE_EEPROM_E24C1024
@@ -120,4 +120,4 @@
 #define OPTION_DISPLAY_MEMORY_CONTENTS_COMMAND_MODE
 
 //esp32 stuff
-#define ESPNOW_WIRELESS_KEYER
+//#define ESPNOW_WIRELESS_KEYER

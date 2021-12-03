@@ -1485,12 +1485,12 @@ struct config_t {  // 111 bytes total
 
 } configuration;
 
-#if defined(ESP32)
+#if defined(ESPNOW_WIRELESS_KEYER)
   void add_to_send_buffer(byte incoming_serial_byte);
   #include "keyer_esp32now.h"
-  #include "keyer_esp32.h"
-  
-  
+#endif
+#if defined(ESP32)
+  #include "keyer_esp32_ttgo.h"  
 #endif
 
 byte sending_mode = UNDEFINED_SENDING;
@@ -6003,9 +6003,12 @@ void check_dit_paddle()
   } else {
     dit_paddle = paddle_right;
   }
-
+#ifdef ESPNOW_WIRELESS_KEYER
   pin_value = getEspNowBuff(ESPNOW_DIT) && paddle_pin_read(dit_paddle);
-
+#endif
+#ifndef ESPNOW_WIRELESS_KEYER
+  pin_value = paddle_pin_read(dit_paddle);
+#endif
   
   #if defined(FEATURE_USB_MOUSE) || defined(FEATURE_USB_KEYBOARD)
     if (usb_dit) {pin_value = 0;}
@@ -6085,8 +6088,13 @@ void check_dah_paddle()
     dah_paddle = paddle_left;
   }
 
+#ifdef ESPNOW_WIRELESS_KEYER
   pin_value = getEspNowBuff(ESPNOW_DAH) && paddle_pin_read(dah_paddle);
-  
+#endif
+#ifndef ESPNOW_WIRELESS_KEYER
+  pin_value = paddle_pin_read(dah_paddle);
+#endif
+
   #if defined(FEATURE_USB_MOUSE) || defined(FEATURE_USB_KEYBOARD)
     if (usb_dah) {pin_value = 0;}
   #endif 
@@ -6124,7 +6132,9 @@ void check_dah_paddle()
 //-------------------------------------------------------------------------------------------------------
 
 void send_dit(){
+#ifdef ESPNOW_WIRELESS_KEYER
   sendEspNowDitDah(ESPNOW_DIT);
+#endif
   // notes: key_compensation is a straight x mS lengthening or shortening of the key down time
   //        weighting is
 
@@ -6230,7 +6240,9 @@ void send_dit(){
 //-------------------------------------------------------------------------------------------------------
 
 void send_dah(){
+#ifdef ESPNOW_WIRELESS_KEYER
   sendEspNowDitDah(ESPNOW_DAH);
+#endif
   unsigned int character_wpm  = configuration.wpm;
 
   #ifdef FEATURE_FARNSWORTH
